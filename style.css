@@ -435,10 +435,10 @@ button:hover {
 #contact {
   display: flex;
   justify-content: center; /* horizontal center */
-  align-items: center; /* optional: vertical center if section height is big */
-  flex-direction: column; /* stack title and form vertically */
-  padding: 30px 20px; /* optional: adjust padding */
-  text-align: center; /* center text inside section */
+  align-items: center;     /* optional: vertical center if section height is big */
+  flex-direction: column;  /* stack title and form vertically */
+  padding: 30px 20px;      /* optional: adjust padding */
+  text-align: center;      /* center text inside section */
 }
 
 .btn-download {

@@ -34,7 +34,7 @@
           A modern and practical systems developer focused on clean, scalable,
           and optimized builds.
         </p>
-        <a href="files/Khen-Sabeniano-CV.pdf" download class="btn-download">
+        <a href="images/CV.pdf" download class="btn-download">
           Download CV
         </a>
       </div>
@@ -49,12 +49,13 @@
         <div class="card">JavaScript</div>
         <div class="card">PHP</div>
         <div class="card">Laravel</div>
+        <div class="card">Python</div>
+        <div class="card">C#</div>
+        <div class="card">Java</div>
         <div class="card">MySQL</div>
         <div class="card">Bootstrap</div>
         <div class="card">Git / GitHub</div>
         <div class="card">Android (XML)</div>
-        <div class="card">Firebase</div>
-        <div class="card">UI/UX (Figma)</div>
       </div>
     </section>
 
@@ -88,9 +89,19 @@
             TVET Competency Certification
           </p>
           <p style="font-size: 0.85rem; font-weight: 400; color: var(--sub)">
-            Awarded to KHEN A. SABENIANO for completing the Philippine TVET
+            Awarded to Me for completing the Philippine TVET
             Competency Assessment and Certification System requirements across
             Basic, Core, and Common Competencies.
+          </p>
+        </div>
+
+        <div class="card" data-cert="Digital Safety and Security Awareness">
+          <p style="font-weight: 700; margin-bottom: 4px">
+            Digital Safety and Security Awareness
+          </p>
+          <p style="font-size: 0.85rem; font-weight: 400; color: var(--sub)">
+            Awarded to Me for completing the Digital Safety and
+            Security Awareness course offered by Cisco Networking Academy.
           </p>
         </div>
       </div>
@@ -280,7 +291,7 @@
       const certificates = {
         "Android Study Jam": {
           image: "images/android.jpg",
-          desc: `Awarded to Khen Sabeniano for participating in the sixteen (16) hours training sessions entitled "Android Study Jam – Android Programming using Android Studio" conducted by the Department of Information and Communications Technology Region IV-A Laguna on March 17–18, 2023 at Laguna State Polytechnic University, Siniloan Campus.`,
+          desc: `Awarded to Me for participating in the sixteen (16) hours training sessions entitled "Android Study Jam – Android Programming using Android Studio" conducted by the Department of Information and Communications Technology Region IV-A Laguna on March 17–18, 2023 at Laguna State Polytechnic University, Siniloan Campus.`,
         },
 
         "Fundamentals of Pitching and Startup Projects": {
@@ -291,7 +302,7 @@
         "TVET Competency Certification": {
           image: "images/g12.jpg", // replace with actual image file
           desc: `
-<p>Awarded to <strong>KHEN A. SABENIANO</strong> for completing the competency requirements under the Philippine TVET Competency Assessment and Certification System.</p>
+<p>Awarded to <strong>Me</strong> for completing the competency requirements under the Philippine TVET Competency Assessment and Certification System.</p>
 
 <h4>Units of Competency Completed:</h4>
 
@@ -329,6 +340,20 @@
 </div>
   `,
         },
+
+    "Digital Safety and Security Awareness": {
+  image: "images/cisco.png", // replace with your actual image
+  desc: `
+    <p>This certificate is awarded to <strong>Me</strong> for successfully completing the <strong>Digital Safety and Security Awareness</strong> course offered by Networking Academy through the Cisco Networking Academy program.</p>
+    <ul>
+      <li>Learned core principles of online safety</li>
+      <li>Gained knowledge on protecting personal data</li>
+      <li>Understood cybersecurity best practices</li>
+      <li>Developed awareness of digital threats and prevention</li>
+    </ul>
+  `,
+},
+
       };
 
       const modal = document.getElementById("projectModal");
@@ -489,44 +514,76 @@
       });
 
       /* CERTIFICATE MODAL */
-      /* CERTIFICATE MODAL */
-      document.querySelectorAll("#certificates .card").forEach((card) => {
-        card.addEventListener("click", () => {
-          const certName = card.dataset.cert;
-          const data = certificates[certName];
-          if (!data) return;
+document.querySelectorAll("#certificates .card").forEach((card) => {
+  card.addEventListener("click", () => {
+    const certName = card.dataset.cert;
+    const data = certificates[certName];
+    if (!data) return;
 
-          modalTitle.textContent = certName;
+    modalTitle.textContent = certName;
 
-          // Render HTML formatting in desc
-          modalDesc.innerHTML = data.desc;
+    modalMedia.innerHTML = ""; // clear previous media
+    modalDesc.innerHTML = "";  // we will insert new layout
 
-          modalMedia.innerHTML = ""; // remove previous media
+    /* ⭐ SPECIAL TVET LAYOUT ⭐ */
+    if (certName === "TVET Competency Certification") {
 
-          const img = document.createElement("img");
-          img.src = data.image;
+      // Wrapper = flex (image left + description right)
+      const wrapper = document.createElement("div");
+      wrapper.style.display = "flex";
+      wrapper.style.gap = "20px";
+      wrapper.style.alignItems = "flex-start";
+      wrapper.style.flexWrap = "wrap";
 
-          // Adjust image sizes per certificate
-          if (certName === "Web Development Bootcamp") {
-            img.style.width = "85%";
-            img.style.maxWidth = "420px";
-          } else if (certName === "TVET Competency Certification") {
-            img.style.width = "70%"; // slightly smaller
-            img.style.maxWidth = "300px"; // reduced max-width
-          } else {
-            img.style.width = "100%";
-            img.style.maxWidth = "650px";
-          }
+      // LEFT SIDE IMAGE
+      const img = document.createElement("img");
+      img.src = data.image;
+      img.style.width = "280px";
+      img.style.borderRadius = "12px";
+      img.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+      img.style.flexShrink = "0";
 
-          img.style.borderRadius = "12px";
-          img.style.margin = "0 auto";
-          img.style.display = "block";
+      // RIGHT SIDE DESCRIPTION
+      const textBox = document.createElement("div");
+      textBox.style.flex = "1";
+      textBox.style.minWidth = "260px";
+      textBox.innerHTML = data.desc;
 
-          modalMedia.appendChild(img);
+      wrapper.appendChild(img);
+      wrapper.appendChild(textBox);
 
-          modal.style.display = "flex";
-        });
-      });
+      modalDesc.appendChild(wrapper);
+      modal.style.display = "flex";
+      return; // stop here so the normal behavior does not run
+    }
+
+    /* ⭐ NORMAL LAYOUT FOR ALL OTHER CERTIFICATES ⭐ */
+
+    // Render HTML formatting in desc
+    modalDesc.innerHTML = data.desc;
+
+    const img = document.createElement("img");
+    img.src = data.image;
+
+    // Size adjustments for non-TVET
+    if (certName === "Web Development Bootcamp") {
+      img.style.width = "85%";
+      img.style.maxWidth = "420px";
+    } else {
+      img.style.width = "100%";
+      img.style.maxWidth = "650px";
+    }
+
+    img.style.borderRadius = "12px";
+    img.style.margin = "0 auto";
+    img.style.display = "block";
+
+    modalMedia.appendChild(img);
+
+    modal.style.display = "flex";
+  });
+});
+
 
       closeBtn.addEventListener("click", () => {
         modal.style.display = "none";
