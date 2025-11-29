@@ -135,12 +135,13 @@ section {
 }
 
 .hero-wrapper {
-  max-width: 100%; /* ensures it can use full width available */
-  width: 650px;    /* optional: preferred width */
+  max-width: 900px;  /* increase max width */
+  width: 100%;       /* take full width available */
   animation: fadeUp 1s ease forwards;
   opacity: 0;
   transform: translateY(20px);
 }
+
 
 .hero-title {
   font-size: 2.8rem;
@@ -150,9 +151,9 @@ section {
 .hero-sub {
   margin-top: 14px;
   color: var(--sub);
-  max-width: 100%; /* allow full width inside hero-wrapper */
   font-size: 1rem;
-  line-height: 1.6; /* optional: improves readability */
+  line-height: 1.6;
+  white-space: normal;
 }
 
 .btn-main {
