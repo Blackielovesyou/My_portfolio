@@ -125,6 +125,8 @@ section {
 
 /* HERO SECTION              */
 
+/* HERO SECTION */
+
 #home {
   padding-top: 10px !important;
   padding-bottom: 0 !important;
@@ -134,12 +136,11 @@ section {
 }
 
 .hero-wrapper {
-  max-width: 500px;
+  max-width: 650px; /* wider wrapper */
   animation: fadeUp 1s ease forwards;
   opacity: 0;
   transform: translateY(20px);
 }
-
 .hero-title {
   font-size: 2.8rem;
   font-weight: 900;
@@ -148,8 +149,9 @@ section {
 .hero-sub {
   margin-top: 14px;
   color: var(--sub);
-  max-width: 420px;
+  max-width: 100%; /* allow full width inside hero-wrapper */
   font-size: 1rem;
+  line-height: 1.6; /* optional: improves readability */
 }
 
 .btn-main {
