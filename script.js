@@ -59,10 +59,12 @@ const projects = {
     desc: "Sprinkl is a web application built in HTML, CSS, JavaScript, and Flask using VSCode. It features real-time chat functionality similar to Facebook Messenger, allowing users to send and receive messages seamlessly while exploring interactive UI components.",
   },
 
-  "IPAMS System": {
-    images: ["images/ipams.png"],
-    desc: "A digital platform to manage permit requests and approvals.",
-  },
+ "Integrated Permit Application and Monitoring System (IPAMS)": {
+  images: ["images/ipams.png"],
+  desc: "A digital platform to manage permit requests and approvals. Users can submit applications for building, occupancy, electrical, and plumbing permits. Built using HTML, CSS, JavaScript, PHP, AJAX, and Laravel.",
+  link: "https://ipams.online/"
+},
+
 
   "My Buddy Assistant": {
     images: [
